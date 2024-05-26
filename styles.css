@@ -1,0 +1,135 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #ff9a9e, #fecfef);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.heart {
+    width: 100px;
+    height: 90px;
+    background: red;
+    position: relative;
+    margin: 0 auto;
+    animation: heartbeat 4s infinite;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    width: 100px;
+    height: 90px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart:before {
+    top: -50px;
+    left: 0;
+}
+
+.heart:after {
+    left: 50px;
+    top: 0;
+}
+
+.card {
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: transform 1s;
+    cursor: pointer;
+    margin: 20px auto;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background: #fff;
+    color: #ff6f61;
+    font-size: 1.5em;
+}
+
+.card-back {
+    background: #ff6f61;
+    color: white;
+    font-size: 1.2em;
+    transform: rotateY(180deg);
+}
+
+@keyframes heartbeat {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        transform: scale(1);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: scale(1.2);
+    }
+}
+
+.flower {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('https://cdn.pixabay.com/photo/2016/04/20/21/17/png-1342113_1280.png');
+    background-size: cover;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.star {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
